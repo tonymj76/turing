@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/tls"
 	"flag"
 	"fmt"
 	"log"
@@ -57,10 +58,10 @@ func main() {
 	}
 
 	// Enable HTTP/2
-	// srv.TLSConfig = &tls.Config{
-	// 	MinVersion:       tls.VersionTLS12,
-	// 	CurvePreferences: []tls.CurveID{tls.CurveP256},
-	// }
-	fmt.Println("staring server")
+	srv.TLSConfig = &tls.Config{
+		MinVersion:       tls.VersionTLS12,
+		CurvePreferences: []tls.CurveID{tls.CurveP256},
+	}
+	fmt.Println("starting server")
 	log.Fatal(srv.ListenAndServe())
 }
