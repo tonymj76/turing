@@ -63,5 +63,5 @@ func main() {
 		CurvePreferences: []tls.CurveID{tls.CurveP256},
 	}
 	fmt.Println("starting server")
-	log.Fatal(srv.ListenAndServe())
+	log.Fatal(srv.ListenAndServeTLS("cert.pem", "key.pem"))
 }
